@@ -13,7 +13,9 @@ const inialState = [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 export const App = () => {
-  const [contacts, setContacts] = useState(inialState);
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem('ContactsList')) || inialState
+  );
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
